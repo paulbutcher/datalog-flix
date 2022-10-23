@@ -7,7 +7,9 @@ def main(): Unit \ IO =
     let parents = inject parentList into ParentOf;
 
     let got = #{
-        GrandparentOf(x, y) :- ParentOf(x, c), ParentOf(c, y).
+        SiblingOf(x, y) :- ParentOf(p, x), ParentOf(p, y), if x != y.
     };
-    let grandparents = query got, parents select (x, y) from GrandparentOf(x, y);
-    println(grandparents)
+
+    let siblings = query got, parents select (x, y) from SiblingOf(x, y);
+
+    println(siblings)
