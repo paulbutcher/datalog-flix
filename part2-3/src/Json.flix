@@ -40,5 +40,5 @@ namespace Json {
     def getCharacterRelationship(relationship: String, config: Config): List[(String, String)] =
         let character = getCharacterName(config);
         getRelationship(relationship, config) |>
-            List.map(offspring -> (character, offspring))
+            List.map(related -> (character, related))
 }
